@@ -1,0 +1,12 @@
+﻿name,id,match_attribute1,match_attribute2,match_attribute3,append_attribute1,append_attribute2,append_attribute3
+ONE ONLY ASSOCIATION,111111111,2023,one only,OH,append,this,together
+TWO ONLY FOUNDATION,222222222,2023,two only,OH,append,and,together
+THREE ONLY FUND,333333333,2023,three only,OH,append,for,together
+ALL THREE GROUP,AAAAAAAAA,2023,all three,OH,append,but,together
+A ONE AND A TWO,12121212,2023,a one and a two,OH,append,not,together
+A ONE AND A THREE,13131313,2023,a one and a three,OH,append,is,together
+A TWO AND A THREE,23232323,2023,a two and a three,OH,append,sure,together
+ONE NO MATCH,10101010,match 1,match 2,match 3,to,ra,loo
+TWO NOT A MATCH EITHER,20202020,match 1,match 2,match 3,ra,to,ra
+THREE NOT MATCHING,30303030,match 1,match 2,match 3,loo,ra,yay
+COMMUNITY FOUNDATION,,2023,a two and a three,OH,,,

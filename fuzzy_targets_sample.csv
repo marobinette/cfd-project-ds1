@@ -1,0 +1,14 @@
+﻿name,id,match_attribute1,match_attribute2,match_attribute3,,,
+ONE ONLY ASSOCIATION,,2023,one only,OH,,,
+TWO ONLY FOUNDATION,,2023,two only,OH,,,
+THREE ONLY FUND,,2023,three only,OH,,,
+ALL THREE GROUP,,2023,all three,OH,,,
+A ONE AND A TWO,,2023,a one and a two,OH,,,
+A ONE AND A THREE,,2023,a one and a three,OH,,,
+A TWO AND A THREE,,2023,a two and a three,OH,,,
+ONE NO MATCH,,NOT,match 2,match 3,to,ra,loo
+TWO NOT A MATCH EITHER,,match 1,NOT,match 3,ra,to,ra
+THREE NOT MATCHING,,match 1,match 2,NOT,loo,ra,yay
+COMMUNITY FOUNDATION,,2023,a two and a three,OH,,,
+VARIOUS,none,2023,xxxx,,,,
+,field,is,blank,,,,
