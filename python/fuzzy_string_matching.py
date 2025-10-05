@@ -26,7 +26,8 @@ skip_names = {
 # work_dir = "C:/Users/hefla/Documents/Work/IPS/Area 990/Python/TheFuzz"
 work_dir = "C:/Users/hefla/GitHub/cfd-project-ds1/matching"
 # output_dir  = "C:/Users/hefla/Documents/Work/IPS/Area 990/Python/TheFuzz/output"
-output_dir  = "C:/Users/hefla/GitHub/cfd-project-ds1/matching"
+# output_dir  = "C:/Users/hefla/GitHub/cfd-project-ds1/matching"
+output_dir = "C:/Users/hefla/Documents/School/Classes/CSYS 5870/Class Project/Matching QC"
 # log_dir  = "C:/Users/hefla/Documents/Work/IPS/Area 990/Python/TheFuzz/logs"
 log_dir = "C:/Users/hefla/GitHub/cfd-project-ds1/matching"
 sponsorfix_dir = "C:/Users/hefla/Documents/Work/IPS/Area 990/Data Sources/DAFs"
@@ -61,7 +62,7 @@ unmatched_targets = []
 
 # Load in target data (the list of base target items you want to match TO)
 targets = []
-with open(targets_file, newline='', encoding='utf-8') as tf:
+with open(targets_file, newline='', encoding='latin1') as tf:
     rdr = csv.reader(tf)
     next(rdr)
     for row in rdr:
@@ -121,7 +122,7 @@ def has_real_id(idval):
     s = idval.strip().upper()
     return s not in ("", "NULL", "NONE", "N/A")
 
-with open(match_candidates_file, newline='', encoding='utf-8') as rf:
+with open(match_candidates_file, newline='', encoding='latin1') as rf:
     rdr = csv.reader(rf)
     next(rdr)
     for row in rdr:
@@ -195,7 +196,7 @@ match_candidates = list(seen_candidates.values())
 if fix_sponsor_names:
     sponsor_fixes = []
     sponsor_fix_eins = []
-    with open(sponsor_fixes_file, newline='', encoding='utf-8') as rf:
+    with open(sponsor_fixes_file, newline='', encoding='latin1') as rf:
         rdr = csv.reader(rf)
         next(rdr)
         for row in rdr:
@@ -359,18 +360,18 @@ for t in targets:
         unmatched_targets.append(t)
 
 # Write output to file
-with open(output_file, 'w', newline='', encoding='utf-8') as wf:
+with open(output_file, 'w', newline='', encoding='latin1') as wf:
     writer = csv.writer(wf)
     writer.writerows(output_rows)
 
-with open(unmatched_file, "w", newline="", encoding="utf-8") as unf:
+with open(unmatched_file, "w", newline="", encoding="latin1") as unf:
     writer = csv.DictWriter(unf, fieldnames=["name", "id", "match_attribute1", "match_attribute2", "match_attribute3"])
     writer.writeheader()
     for row in unmatched_targets:
         writer.writerow(row)
 
 # Write log file
-with open(log_file, "w", encoding = "utf-8") as logf:
+with open(log_file, "w", encoding = "latin1") as logf:
     logf.write(f"Number of targets: {num_targets}\n")
     logf.write(f"Total matches: {total_matches}\n\n")
     logf.write(f"Skipped records (due to skip_names): {skipped_records}\n")
