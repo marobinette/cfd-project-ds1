@@ -1,3 +1,9 @@
+# -------------------------------------------------------------------
+# Process to match DC Inbox politicians to FEC Open Secrets
+# candidates. Adapted from a general nonprofit matching process created 
+# by Helen Flannery for the Institute for Policy Studies.
+# -------------------------------------------------------------------
+
 import csv
 import os
 import re
@@ -7,20 +13,19 @@ from rapidfuzz import process, fuzz # Switch to RapidFuzz (accelerated)
 
 # Set parameters
 min_similarity_score = 75
-# output_file_term        = "c3flows_2023_full_75TEST"
-match_on_attribute1     = True  # set to true if you want to also match on attribute1
-match_on_attribute2     = True  # set to true if you want to also match on attribute2
-match_on_attribute3     = True  # set to true if you want to also match on attribute3
-fix_sponsor_names       = False # set to true if you're matching to a list of DAF sponsors
+match_on_attribute1     = True
+match_on_attribute2     = True
+match_on_attribute3     = True
+fix_third_parties       = True
 output_file_term        = "dcinbox_match_test_2020"
 
 # Define target names to skip
-skip_names = {
-    "COMMUNITY FOUNDATION",
-    "COMMUNITYS FOUNDATION",
-    "COMMUNITY FOUNDATIONS",
-    "NONE"
-}
+# skip_names = {
+#     "COMMUNITY FOUNDATION",
+#     "COMMUNITYS FOUNDATION",
+#     "COMMUNITY FOUNDATIONS",
+#     "NONE"
+# }
 
 # Define directories
 # work_dir = "C:/Users/hefla/Documents/Work/IPS/Area 990/Python/TheFuzz"
@@ -30,10 +35,10 @@ work_dir = "C:/Users/hefla/GitHub/cfd-project-ds1/matching"
 output_dir = "C:/Users/hefla/Documents/School/Classes/CSYS 5870/Class Project/Matching QC"
 # log_dir  = "C:/Users/hefla/Documents/Work/IPS/Area 990/Python/TheFuzz/logs"
 log_dir = "C:/Users/hefla/GitHub/cfd-project-ds1/matching"
-sponsorfix_dir = "C:/Users/hefla/Documents/Work/IPS/Area 990/Data Sources/DAFs"
+third_party_fix_dir = "C:/Users/hefla/GitHub/cfd-project-ds1/data/fec"
 
 # Define input files
-sponsor_fixes_file = os.path.join(sponsorfix_dir, f"DAF_Sponsor_TheFuzz_Names_and_Aliases.csv")
+third_party_fixes_file = os.path.join(third_party_fix_dir, f"dcinbox_third_party_fixes.csv")
 # targets_file = os.path.join(work_dir, f"fuzzy_targets.csv")
 # targets_file = os.path.join(work_dir, f"fuzzy_targets - match_test.csv")
 targets_file = os.path.join(work_dir, f"match_targets_2020_test.csv")
@@ -60,6 +65,31 @@ unmatched_due_to_attributes = 0
 # Initialize a list for the unmatched targets
 unmatched_targets = []
 
+# Load in third_party name fixes file 
+if fix_third_parties:
+    third_party_fixes = []
+    third_party_fix_cids = []
+    with open(third_party_fixes_file, newline='', encoding='latin1') as rf:
+        rdr = csv.reader(rf)
+        next(rdr)
+        for row in rdr:
+            # if search_type == "attribute1":
+            third_party_fixes.append({
+                "cid":              row[0],
+                "name":             row[1],
+                "real_party":       row[2],
+                "change":           row[3],
+                "change_to":        row[4],
+            })
+            third_party_fix_cids.append(
+                row[0]
+            )
+            # else:
+            #     raise ValueError("unsupported type")
+
+# print("3P fixes: ", third_party_fixes)
+# print("3P CIDs: ", third_party_fix_cids)
+        
 # Load in target data (the list of base target items you want to match TO)
 targets = []
 with open(targets_file, newline='', encoding='latin1') as tf:
@@ -73,32 +103,32 @@ with open(targets_file, newline='', encoding='latin1') as tf:
             blank_records += 1
             continue        
         # Don't add skip_names names to the search list
-        if name in skip_names:
-            skipped_records += 1
-            continue       
+        # if name in skip_names:
+        #     skipped_records += 1
+        #     continue       
         # Don't add any names that contain the following words to the search list
         if any(bad in name for bad in ["VARIOUS", "N/A"]):
             bad_name_records += 1
             continue
-        # Loop through sponsor fixes table to check alternate names, if they exist
-        if fix_sponsor_names:
-            if row[0] in sponsor_fix_eins:
-                for sponsor in sponsor_fixes:
-                    # Fix the sponsor's name if it appears in the sponsor_fixes table with a YES in the CHANGE field
-                    if row[0] == sponsor['id'] and sponsor['change'] == 'YES':
-                        name = sponsor['change_to']
+        # Loop through third_party fixes table to check alternate names, if they exist
+        # if fix_third_parties:
+        #     if row[0] in third_party_fix_cids:
+        #         for third_party in third_party_fixes:
+        #             # Fix the third_party's party if it appears in the third_party_fixes file with a YES in the CHANGE field
+        #             if row[0] == third_party['cid'] and third_party['change'] == 'YES':
+        #                 name = third_party['change_to']
                         # print("Fixed name: ", name)
-                    # Add additional row if the sponsor has an alternate name to search on (that is not NONE)
-                    if row[0] == sponsor['id'] and sponsor['alternate_name'] != 'NONE':
-                        # print("Appending alternate name: ", sponsor['alternate_name'])
-                        alt_name = sponsor['alternate_name']
-                        targets.append({
-                            "id":           row[0],
-                            "name":         alt_name,
-                            "attribute1":   row[2],
-                            "attribute2":   row[3]
-                        })
-                        # print(sponsor)
+                    # Add additional row if the third_party has an alternate name to search on (that is not NONE)
+                    # if row[0] == third_party['id'] and third_party['alternate_name'] != 'NONE':
+                        # # print("Appending alternate name: ", third_party['alternate_name'])
+                        # alt_name = third_party['alternate_name']
+                        # targets.append({
+                        #     "id":           row[0],
+                        #     "name":         alt_name,
+                        #     "attribute1":   row[2],
+                        #     "attribute2":   row[3]
+                        # })
+                        # # print(third_party)
         # print("Appending: ", name)
         targets.append({
             "name":             name,
@@ -108,6 +138,8 @@ with open(targets_file, newline='', encoding='latin1') as tf:
             "match_attribute3": row[4]
         })
         num_targets += 1
+
+# print("Targets: ", targets)
 
 # Load in match candidate data (the pool of potential match candidates you want to match FROM)
 match_candidates = []
@@ -128,12 +160,21 @@ with open(match_candidates_file, newline='', encoding='latin1') as rf:
     for row in rdr:
         # rname = row[0]
         rname = (row[0] or "").strip().upper()
+        rparty = (row[2] or "").strip().upper()
+
+        # Apply third-party fixes (on candidates instead of targets)
+        if fix_third_parties and row[1] in third_party_fix_cids:
+            for third_party in third_party_fixes:
+                if row[1] == third_party['cid'] and third_party['change'] == 'YES':
+                    rparty = third_party['change_to'].strip().upper()
+                    # print(f"Fixed candidate party for {row[1]} → {rparty}")
+
         # Skip if name is blank
         if not rname:
             continue
         # Don't add skip_names names to the search list
-        if rname in skip_names:
-            continue 
+        # if rname in skip_names:
+        #     continue 
         # if the unique combination of candidate name and matching attribute(s) 
         # doesn't already exist in the comparison list, then add it
         # By building a dynamic candidate_combo list of fields to match 
@@ -151,9 +192,11 @@ with open(match_candidates_file, newline='', encoding='latin1') as rf:
         current_has_id = has_real_id(row[1])
 
         candidate_dict = {
-            "name":                 row[0],
+            # "name":                 row[0],
+            "name":                 rname,
             "id":                   row[1],
-            "match_attribute1":     row[2],
+            # "match_attribute1":     row[2],
+            "match_attribute1":     rparty,
             "match_attribute2":     row[3],
             "match_attribute3":     row[4],
             "append_attribute1":    row[5],
@@ -192,28 +235,6 @@ with open(match_candidates_file, newline='', encoding='latin1') as rf:
 # Rehydrate match_candidates from the dict (preserves one entry per combo; order may differ)
 match_candidates = list(seen_candidates.values())
 
-# Load in sponsor name fixes and aliases file (if you want to fix them on the fly)
-if fix_sponsor_names:
-    sponsor_fixes = []
-    sponsor_fix_eins = []
-    with open(sponsor_fixes_file, newline='', encoding='latin1') as rf:
-        rdr = csv.reader(rf)
-        next(rdr)
-        for row in rdr:
-            if search_type == "attribute1":
-                sponsor_fixes.append({
-                    "id":               row[0],
-                    "name":             row[1],
-                    "change":           row[2],
-                    "change_to":        row[3],
-                    "alternate_name":   row[4]
-                })
-                sponsor_fix_eins.append(
-                    row[0]
-                )
-            else:
-                raise ValueError("unsupported type")
-        
 # Index the search targets by name (for default searches)
 target_names   = [t["name"] for t in targets]
 target_lookup  = { t["name"]: t for t in targets }
@@ -234,6 +255,7 @@ for t in targets:
         match_components.append(t["match_attribute3"])
     # default to indexing on a constant if no match attributes are chosen
     match_attributes = tuple(match_components) if match_components else ("ALL",)
+    # print("Target match components: ", match_attributes)
     targets_index[match_attributes].append(t["name"])        
 
 # Index the match candidates depending on which match attributes you're using
@@ -248,6 +270,7 @@ for c in match_candidates:
         match_components.append(c["match_attribute3"])
     # default to indexing on a constant if no match attributes are chosen
     match_attributes = tuple(match_components) if match_components else ("ALL",)
+    # print("Match attributes: ", match_attributes)
     candidates_index[match_attributes].append(c["name"])        
 
 # Initialize the output rows variable and add a header row to it
@@ -261,7 +284,7 @@ header = [
 ]
 output_rows.append(header)
 
-# Iterate through the grant recipients and match them to the target sponsors
+# Iterate through the grant recipients and match them to the target third_partys
 for t in targets:
     
     target_name  = t["name"]
@@ -308,11 +331,14 @@ for t in targets:
     match_pool = candidates_index.get(match_attributes, [])
     if not match_pool:
         unmatched_due_to_attributes += 1
+        # print("Unmatched pool")
         # unmatched_targets.append(t)
         continue
 
     for scorer_name, scorer in scorers:
         # fuzzy match with score cutoff
+        # print("Target: ", target_name)
+        # print("Match pool: ", match_pool)
         candidate = process.extractOne(
             target_name,
             match_pool,
@@ -374,7 +400,7 @@ with open(unmatched_file, "w", newline="", encoding="latin1") as unf:
 with open(log_file, "w", encoding = "latin1") as logf:
     logf.write(f"Number of targets: {num_targets}\n")
     logf.write(f"Total matches: {total_matches}\n\n")
-    logf.write(f"Skipped records (due to skip_names): {skipped_records}\n")
+    # logf.write(f"Skipped records (due to skip_names): {skipped_records}\n")
     logf.write(f"Skipped records (due to blank_records): {blank_records}\n")
     logf.write(f"Skipped records (due to bad_names): {bad_name_records}\n")
     logf.write(f"\nTotal unmatched: {num_targets - total_matches}\n")
