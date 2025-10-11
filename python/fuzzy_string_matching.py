@@ -32,9 +32,9 @@ output_file_term        = "dcinbox_match_test_2020"
 work_dir = "C:/Users/hefla/GitHub/cfd-project-ds1/matching"
 # output_dir  = "C:/Users/hefla/Documents/Work/IPS/Area 990/Python/TheFuzz/output"
 # output_dir  = "C:/Users/hefla/GitHub/cfd-project-ds1/matching"
-output_dir = "C:/Users/hefla/Documents/School/Classes/CSYS 5870/Class Project/Matching QC"
+output_dir = "C:/Users/hefla/GitHub/cfd-project-ds1/matching"
 # log_dir  = "C:/Users/hefla/Documents/Work/IPS/Area 990/Python/TheFuzz/logs"
-log_dir = "C:/Users/hefla/GitHub/cfd-project-ds1/matching"
+log_dir = "C:/Users/hefla/Documents/School/Classes/CSYS 5870/Class Project/Matching QC"
 third_party_fix_dir = "C:/Users/hefla/GitHub/cfd-project-ds1/data/fec"
 
 # Define input files
