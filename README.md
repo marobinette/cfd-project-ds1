@@ -53,6 +53,8 @@ cfd-project-ds1/
 
 ## Usage
 
+### NLP on DC Inbox data set
+
 1. Start Jupyter Notebook:
    ```bash
    jupyter notebook
@@ -60,6 +62,25 @@ cfd-project-ds1/
 
 2. Open `notebooks/dcInbox.ipynb` to run the analysis
 
+### Merging DC Inbox & FEC data sets
+
+1. Start Jupyter Notebook:
+   ```bash
+   jupyter notebook
+   ```
+
+2. Open `notebooks/DCInbox_ETL.ipynb` and run it to create the DC Inbox data set for matching to FEC data
+   
+3. Open `notebooks/Open_Secrets_ETL.jpynb` and run it to create the FEC data set for matching to DC Inbox data
+
+4. Open `python/fuzzy_string_matching.py` and run it to match the DC Inbox data to the FEC data
+   
+5. Open notebooks/Matched_Politicians_Dataset_Creation.jpynb to create the matched politicians data set for analysis
+
+### Exploratory Data Analysis
+
+1. Open `Matched_Politicians_EDA.jpynb` to run the analysis on the matched politicians data set
+   
 ## Working with Large Files
 
 This project uses **Git LFS** to manage large CSV files. When adding new large files:
