@@ -17,7 +17,7 @@ match_on_attribute1     = True
 match_on_attribute2     = True
 match_on_attribute3     = True
 fix_third_parties       = True
-output_file_term        = "dcinbox_match_test_2020"
+output_file_term        = "2016"
 
 # Define target names to skip
 # skip_names = {
@@ -32,7 +32,7 @@ output_file_term        = "dcinbox_match_test_2020"
 work_dir = "C:/Users/hefla/GitHub/cfd-project-ds1/matching"
 # output_dir  = "C:/Users/hefla/Documents/Work/IPS/Area 990/Python/TheFuzz/output"
 # output_dir  = "C:/Users/hefla/GitHub/cfd-project-ds1/matching"
-output_dir = "C:/Users/hefla/GitHub/cfd-project-ds1/matching"
+output_dir = "C:/Users/hefla/GitHub/cfd-project-ds1/data/matched"
 # log_dir  = "C:/Users/hefla/Documents/Work/IPS/Area 990/Python/TheFuzz/logs"
 log_dir = "C:/Users/hefla/Documents/School/Classes/CSYS 5870/Class Project/Matching QC"
 third_party_fix_dir = "C:/Users/hefla/GitHub/cfd-project-ds1/data/fec"
@@ -41,16 +41,17 @@ third_party_fix_dir = "C:/Users/hefla/GitHub/cfd-project-ds1/data/fec"
 third_party_fixes_file = os.path.join(third_party_fix_dir, f"dcinbox_third_party_fixes.csv")
 # targets_file = os.path.join(work_dir, f"fuzzy_targets.csv")
 # targets_file = os.path.join(work_dir, f"fuzzy_targets - match_test.csv")
-targets_file = os.path.join(work_dir, f"match_targets_2020_test.csv")
+targets_file = os.path.join(work_dir, f"match_targets_2016.csv")
 # match_candidates_file = os.path.join(work_dir, f"fuzzy_match_candidates.csv")
 # match_candidates_file = os.path.join(work_dir, f"fuzzy_match_candidates - match_test.csv")
-match_candidates_file = os.path.join(work_dir, f"match_candidates_2020_test.csv")
+match_candidates_file = os.path.join(work_dir, f"match_candidates_2016.csv")
 # match_candidates_file = os.path.join(work_dir, f"fuzzy_match_candidates - c3 flows part ii with null EINs 2023_prepped.csv")
 
 # Define output directory and output file
 os.makedirs(output_dir, exist_ok=True)
 timestamp   = datetime.now().strftime('%Y%m%d_%H%M%S')
-output_file = os.path.join(output_dir, f"match_output_{min_similarity_score}_{output_file_term}_{timestamp}.csv")
+# output_file = os.path.join(output_dir, f"match_output_{min_similarity_score}_{output_file_term}_{timestamp}.csv")
+output_file = os.path.join(output_dir, f"matched_politicians_{output_file_term}_{min_similarity_score}.csv")
 unmatched_file = os.path.join(output_dir, f"unmatched_records_{min_similarity_score}_{output_file_term}_{timestamp}.csv")
 log_file = os.path.join(log_dir, f"match_log_{min_similarity_score}_{output_file_term}_{timestamp}.csv")
 
@@ -390,11 +391,11 @@ with open(output_file, 'w', newline='', encoding='latin1') as wf:
     writer = csv.writer(wf)
     writer.writerows(output_rows)
 
-with open(unmatched_file, "w", newline="", encoding="latin1") as unf:
-    writer = csv.DictWriter(unf, fieldnames=["name", "id", "match_attribute1", "match_attribute2", "match_attribute3"])
-    writer.writeheader()
-    for row in unmatched_targets:
-        writer.writerow(row)
+# with open(unmatched_file, "w", newline="", encoding="latin1") as unf:
+#     writer = csv.DictWriter(unf, fieldnames=["name", "id", "match_attribute1", "match_attribute2", "match_attribute3"])
+#     writer.writeheader()
+#     for row in unmatched_targets:
+#         writer.writerow(row)
 
 # Write log file
 with open(log_file, "w", encoding = "latin1") as logf:
