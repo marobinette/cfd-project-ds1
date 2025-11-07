@@ -45,9 +45,13 @@ Data science project analyzing DC Inbox data.
 cfd-project-ds1/
 ├── data/
 │   ├── dcInbox/          # DC Inbox CSV data files (tracked with Git LFS)
-│   └── finance/
+│   └── fec/
+│   └── matched/
+├── emails/
+├── matching/
 ├── notebooks/
 │   └── dcInbox.ipynb     # Main analysis notebook
+├── python/
 └── README.md
 ```
 
@@ -79,7 +83,7 @@ cfd-project-ds1/
 
 ### Exploratory Data Analysis
 
-1. Open `Matched_Politicians_EDA.jpynb` to run the analysis on the matched politicians data set
+1. Open `Matched_Politicians_EDA.jpynb` to run the analysis & visualizations for the matched politicians data set
    
 ## Working with Large Files
 
