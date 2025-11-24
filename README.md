@@ -87,7 +87,7 @@ cfd-project-ds1/
    
 ### Generate table figure PNG files
 
-1. Run both of the python scripts 'export_emo_table_figure.py' and 'export_theme_table_figure.py' to generate PNG images of the tables needed for Appendices B and C, respectively.
+1. Run both of the python scripts `python/export_emo_table_figure.py` and `python/export_theme_table_figure.py` to generate PNG images of the tables needed for Appendices B and C, respectively.
    
 ## Working with Large Files
 
