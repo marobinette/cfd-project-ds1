@@ -9,9 +9,8 @@ from matplotlib.colors import LinearSegmentedColormap
 import os
 
 # -------------------------------
-# Load data
+# Load CSV
 # -------------------------------
-# Replace with the correct path to your CSV
 theme_table_df = pd.read_csv("../data/matched/data_for_theme_table_figure.csv")
 
 # -------------------------------
@@ -96,7 +95,8 @@ theme_pt_styled = (
             {'selector': 'caption', 'props': [
                 ('caption-side', 'bottom'),
                 ('font-size', caption_size),
-                ('text-align', 'left')
+                ('text-align', 'left'),
+                ('margin-top', '8pt')  
             ]}
         ], overwrite=False)
         .set_caption("The greater the fundraising score, the darker the shading.")
@@ -105,4 +105,4 @@ theme_pt_styled = (
 os.makedirs("../figures", exist_ok=True)
 
 # Export to PNG 
-dfi.export(theme_pt_styled, "../figures/theme_pt.png")
+dfi.export(theme_pt_styled, "../figures/theme_table_paper.png")

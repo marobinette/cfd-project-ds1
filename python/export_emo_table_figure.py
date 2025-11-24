@@ -1,6 +1,6 @@
 # -------------------------------------------------------------------
 # Process to export a figure that is a table of all the fundraising
-# scores for all the themes we analyzed.
+# scores for all the emotions we analyzed.
 # -------------------------------------------------------------------
 
 import pandas as pd
@@ -9,65 +9,79 @@ from matplotlib.colors import LinearSegmentedColormap
 import os
 
 # -------------------------------
-# Load data
+# Load CSV
 # -------------------------------
-# Replace with the correct path to your CSV
-theme_table_df = pd.read_csv("../data/matched/data_for_theme_table_figure.csv")
+emo_table_df = pd.read_csv("../data/matched/data_for_emotion_table_figure.csv")
 
 # -------------------------------
-# Create pivot table for TOPIC
+# Create pivot table for EMOTION
 # -------------------------------
-theme_pt_df = theme_table_df.copy()
+emo_pt_df = emo_table_df.copy()
 
 # Map Category to different labels (with line breaks)
 mapping = {
-    "Topic\nused": "Topic\nused in\nnewsletter",
-    "Not\nused": "Topic\nnot used in\nnewsletter"
+    "Low": "Low\n(Less than 0.5)",
+    "High": "High\n(0.5 or More)"
 }
-theme_pt_df["Category"] = theme_pt_df["Category"].map(mapping)
+emo_pt_df["Category"] = (
+    emo_pt_df["Category"].map(mapping)
+)
 
 # Specify sorting
-pt_cat_order = ["Topic\nused in\nnewsletter", "Topic\nnot used in\nnewsletter"]
+pt_cat_order = ["Low\n(Less than 0.5)", "High\n(0.5 or More)"]
 pt_party_order = ["Overall", "Democrats", "Republicans"]
-
-theme_pt_df["Category"] = pd.Categorical(theme_pt_df["Category"], categories=pt_cat_order, ordered=True)
-theme_pt_df["Party"] = pd.Categorical(theme_pt_df["Party"], categories=pt_party_order, ordered=True)
+# Map Category sorting
+emo_pt_df["Category"] = pd.Categorical(
+    emo_pt_df["Category"],
+    categories=pt_cat_order,
+    ordered=True,
+)
+emo_pt_df["Party"] = pd.Categorical(
+    emo_pt_df["Party"],
+    categories=pt_party_order,
+    ordered=True,
+)
 
 # Pivot table
-theme_pt = pd.pivot_table(
-    theme_pt_df,
+emo_pt = pd.pivot_table(
+    emo_pt_df,
     index="Breakdown",
     columns=["Party", "Category"],
-    values="Term Presence",
+    values="Score",
     aggfunc="mean",
     fill_value=0,
-    observed=True
+    observed=True # only include combos present in the data
 )
 
 # Wrap headers (keep line breaks)
-theme_pt_wrapped = theme_pt.copy()
-theme_pt_wrapped.columns = pd.MultiIndex.from_tuples([
-    (party, cat) for party, cat in theme_pt_wrapped.columns
+emo_pt_wrapped = emo_pt.copy()
+emo_pt_wrapped.columns = pd.MultiIndex.from_tuples([
+    (party, cat)
+    for party, cat in emo_pt_wrapped.columns
 ])
 
 # Remove index and column names
-theme_pt_wrapped.index.name = None
-theme_pt_wrapped.columns.names = [None, None]
+emo_pt_wrapped.index.name = None
+emo_pt_wrapped.columns.names = [None, None]
 
 # -------------------------------
-# Style 
+# Style the table
 # -------------------------------
-cmap = LinearSegmentedColormap.from_list("white_gray", ["#ffffff", "#b0b0b0"])
+cmap = LinearSegmentedColormap.from_list("white_gray", ["#ffffff", "#b0b0b0"])  
 
 # Clip values for gradient
-gradient_df_clipped = theme_pt_wrapped.clip(upper=2.1, lower=1.7)
+gradient_df = emo_pt_wrapped.copy()
+gradient_df_clipped = gradient_df.clip(upper=2.1, lower=1.7)
+# gradient_df_clipped = gradient_df.clip(lower=.5)
+
+# Find the min/max across the entire table for setting the gradient
 vmin = gradient_df_clipped.min().min()
 vmax = gradient_df_clipped.max().max()
 
 caption_size = "8pt"
 
-theme_pt_styled = (
-    theme_pt_wrapped.style
+emo_pt_styled = (
+    emo_pt_wrapped.style
         .format("{:.3f}")
         .background_gradient(cmap=cmap, vmin=vmin, vmax=vmax)
         .set_table_styles([
@@ -96,7 +110,8 @@ theme_pt_styled = (
             {'selector': 'caption', 'props': [
                 ('caption-side', 'bottom'),
                 ('font-size', caption_size),
-                ('text-align', 'left')
+                ('text-align', 'left'),
+                ('margin-top', '8pt')  
             ]}
         ], overwrite=False)
         .set_caption("The greater the fundraising score, the darker the shading.")
@@ -105,4 +120,4 @@ theme_pt_styled = (
 os.makedirs("../figures", exist_ok=True)
 
 # Export to PNG 
-dfi.export(theme_pt_styled, "../figures/theme_pt.png")
+dfi.export(emo_pt_styled, "../figures/emotion_table_paper.png")
