@@ -85,6 +85,10 @@ cfd-project-ds1/
 
 1. Open `Matched_Politicians_EDA.jpynb` to run the analysis & visualizations for the matched politicians data set
    
+### Generate table figure PNG files
+
+1. Run both of the python scripts `python/export_emo_table_figure.py` and `python/export_theme_table_figure.py` to generate PNG images of the tables needed for Appendices B and C, respectively.
+   
 ## Working with Large Files
 
 This project uses **Git LFS** to manage large CSV files. When adding new large files:
