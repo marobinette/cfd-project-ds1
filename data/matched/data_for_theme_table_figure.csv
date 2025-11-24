@@ -1,38 +1,289 @@
-Overall,Overall,Democrats,Democrats,Republicans,Republicans
+Category,Term Presence,Party,Breakdown
 "Topic
-used in
-newsletter","Topic
-not used in
-newsletter","Topic
-used in
-newsletter","Topic
-not used in
-newsletter","Topic
-used in
-newsletter","Topic
-not used in
-newsletter"
-1.6068597338288633,1.881830014538646,1.926103530160595,1.629874552407425,1.2876159374971314,2.133785476669867
-1.8422902884281165,1.8789317188108459,1.6979998330969428,1.6660207248515329,1.9865807437592906,2.0918427127701587
-1.8277185059319805,4.078286324786325,1.6362011811891033,4.597716666666666,2.0192358306748575,3.5315175438596484
-2.064802777355963,1.844915275365705,1.8670259509618061,1.6670498007528913,2.2625796037501194,2.0227807499785193
-1.8103535021318304,2.058527281221485,1.69137970656122,1.671453819395637,1.9293272977024412,2.445600743047333
-1.835967931938721,1.886258488493026,1.6064210505835739,1.7333753602471533,2.065514813293868,2.039141616738899
-1.6569382716049381,1.8590484346884935,1.288563492063492,1.684772192054495,2.94625,2.033324677322492
-1.7924758784169335,1.9341126279515624,1.6742571828012014,1.7032708255577387,1.910694574032665,2.1649544303453854
-1.9430057488886454,1.7999641910422604,1.711752402669936,1.688305219224876,2.1742590951073555,1.9116231628596447
-1.8563055732314038,1.877445847951753,1.7121397343552733,1.6617714128163972,2.0004714121075344,2.093120283087108
-1.7846351546159955,1.8867604529734432,1.704443471253833,1.6927638748224778,1.8648268379781585,2.0807570311244086
-1.850642522286246,1.8538122771246792,1.7085745884912213,1.6727305848917027,1.9927104560812703,2.0348939693576558
-1.8893881598735327,1.872348847869416,1.6746869961857758,1.704532718052761,2.10408932356129,2.040164977686071
-1.922299378997496,1.8719517351904027,2.018936289983165,1.6661910431088742,1.8256624680118267,2.077712427271931
-2.5550126284552874,1.8171156188757838,2.3832848266499584,1.6478808498094895,2.7267404302606164,1.9863503879420785
-1.9790012681514206,1.8171611560960876,1.8213784636374202,1.6562770955072088,2.1366240726654206,1.978045216684966
-1.8229104608331863,1.8705948507056356,1.5768514263204694,1.7574927401726148,2.0689694953459035,1.9836969612386568
-1.7963261723345034,1.9322703578577982,1.6731030545180776,1.6906860336512672,1.9195492901509297,2.173854682064329
-1.8877235209094771,1.8570068963351372,1.3903308823529414,1.6925466770774982,2.2553615581034387,2.021467115592776
-1.748772528288845,1.8551589339407581,1.4223232323232324,1.7050145006653736,2.061619770255892,2.005303367216143
-1.9279360216440848,1.8257770705338991,1.6455298598239132,1.7208343880232972,2.2103421834642565,1.9307197530445013
-1.9776620426978504,1.849345471627099,1.8625139807478674,1.6674532674766056,2.088012268733251,2.0312376757775925
-1.711595372791811,1.92335128902135,1.680322976571711,1.6851740790541685,1.7428677690119108,2.161528498988532
-1.936010701116011,1.8393980550046216,1.867123498742221,1.6008189929904217,2.0048979034898013,2.0779771170188215
+used",1.8563055732314038,Overall,Government Overreach
+"Not
+used",1.877445847951753,Overall,Government Overreach
+"Topic
+used",1.7121397343552733,Democrats,Government Overreach
+"Not
+used",1.6617714128163972,Democrats,Government Overreach
+"Topic
+used",2.0004714121075344,Republicans,Government Overreach
+"Not
+used",2.093120283087108,Republicans,Government Overreach
+"Topic
+used",1.8229104608331863,Overall,National Security And Defense
+"Not
+used",1.8705948507056356,Overall,National Security And Defense
+"Topic
+used",1.5768514263204694,Democrats,National Security And Defense
+"Not
+used",1.7574927401726148,Democrats,National Security And Defense
+"Topic
+used",2.0689694953459035,Republicans,National Security And Defense
+"Not
+used",1.9836969612386568,Republicans,National Security And Defense
+"Topic
+used",1.835967931938721,Overall,Education
+"Not
+used",1.886258488493026,Overall,Education
+"Topic
+used",1.6064210505835739,Democrats,Education
+"Not
+used",1.7333753602471533,Democrats,Education
+"Topic
+used",2.065514813293868,Republicans,Education
+"Not
+used",2.039141616738899,Republicans,Education
+"Topic
+used",1.8422902884281165,Overall,Climate And Environmental Policy
+"Not
+used",1.8789317188108459,Overall,Climate And Environmental Policy
+"Topic
+used",1.6979998330969428,Democrats,Climate And Environmental Policy
+"Not
+used",1.6660207248515329,Democrats,Climate And Environmental Policy
+"Topic
+used",1.9865807437592906,Republicans,Climate And Environmental Policy
+"Not
+used",2.0918427127701587,Republicans,Climate And Environmental Policy
+"Topic
+used",1.8893881598735327,Overall,Housing And Community
+"Not
+used",1.872348847869416,Overall,Housing And Community
+"Topic
+used",1.6746869961857758,Democrats,Housing And Community
+"Not
+used",1.704532718052761,Democrats,Housing And Community
+"Topic
+used",2.10408932356129,Republicans,Housing And Community
+"Not
+used",2.040164977686071,Republicans,Housing And Community
+"Topic
+used",1.8103535021318304,Overall,Economy And Taxes
+"Not
+used",2.058527281221485,Overall,Economy And Taxes
+"Topic
+used",1.69137970656122,Democrats,Economy And Taxes
+"Not
+used",1.671453819395637,Democrats,Economy And Taxes
+"Topic
+used",1.9293272977024412,Republicans,Economy And Taxes
+"Not
+used",2.445600743047333,Republicans,Economy And Taxes
+"Topic
+used",1.850642522286246,Overall,Healthcare
+"Not
+used",1.8538122771246792,Overall,Healthcare
+"Topic
+used",1.7085745884912213,Democrats,Healthcare
+"Not
+used",1.6727305848917027,Democrats,Healthcare
+"Topic
+used",1.9927104560812703,Republicans,Healthcare
+"Not
+used",2.0348939693576558,Republicans,Healthcare
+"Topic
+used",1.8277185059319805,Overall,Congress And Legislation
+"Not
+used",4.078286324786325,Overall,Congress And Legislation
+"Topic
+used",1.6362011811891033,Democrats,Congress And Legislation
+"Not
+used",4.597716666666666,Democrats,Congress And Legislation
+"Topic
+used",2.0192358306748575,Republicans,Congress And Legislation
+"Not
+used",3.5315175438596484,Republicans,Congress And Legislation
+"Topic
+used",1.7924758784169335,Overall,Energy Policy
+"Not
+used",1.9341126279515624,Overall,Energy Policy
+"Topic
+used",1.6742571828012014,Democrats,Energy Policy
+"Not
+used",1.7032708255577387,Democrats,Energy Policy
+"Topic
+used",1.910694574032665,Republicans,Energy Policy
+"Not
+used",2.1649544303453854,Republicans,Energy Policy
+"Topic
+used",1.748772528288845,Overall,Social Issues And Values
+"Not
+used",1.8551589339407581,Overall,Social Issues And Values
+"Topic
+used",1.4223232323232324,Democrats,Social Issues And Values
+"Not
+used",1.7050145006653736,Democrats,Social Issues And Values
+"Topic
+used",2.061619770255892,Republicans,Social Issues And Values
+"Not
+used",2.005303367216143,Republicans,Social Issues And Values
+"Topic
+used",1.9279360216440848,Overall,Social Security And Medicare
+"Not
+used",1.8257770705338991,Overall,Social Security And Medicare
+"Topic
+used",1.6455298598239132,Democrats,Social Security And Medicare
+"Not
+used",1.7208343880232972,Democrats,Social Security And Medicare
+"Topic
+used",2.2103421834642565,Republicans,Social Security And Medicare
+"Not
+used",1.9307197530445013,Republicans,Social Security And Medicare
+"Topic
+used",1.7963261723345034,Overall,Patriotic Rhetoric
+"Not
+used",1.9322703578577982,Overall,Patriotic Rhetoric
+"Topic
+used",1.6731030545180776,Democrats,Patriotic Rhetoric
+"Not
+used",1.6906860336512672,Democrats,Patriotic Rhetoric
+"Topic
+used",1.9195492901509297,Republicans,Patriotic Rhetoric
+"Not
+used",2.173854682064329,Republicans,Patriotic Rhetoric
+"Topic
+used",1.922299378997496,Overall,Immigration
+"Not
+used",1.8719517351904027,Overall,Immigration
+"Topic
+used",2.018936289983165,Democrats,Immigration
+"Not
+used",1.6661910431088742,Democrats,Immigration
+"Topic
+used",1.8256624680118267,Republicans,Immigration
+"Not
+used",2.077712427271931,Republicans,Immigration
+"Topic
+used",1.9430057488886454,Overall,Executive Power
+"Not
+used",1.7999641910422604,Overall,Executive Power
+"Topic
+used",1.711752402669936,Democrats,Executive Power
+"Not
+used",1.688305219224876,Democrats,Executive Power
+"Topic
+used",2.1742590951073555,Republicans,Executive Power
+"Not
+used",1.9116231628596447,Republicans,Executive Power
+"Topic
+used",1.9790012681514206,Overall,Law Enforcement And Crime
+"Not
+used",1.8171611560960876,Overall,Law Enforcement And Crime
+"Topic
+used",1.8213784636374202,Democrats,Law Enforcement And Crime
+"Not
+used",1.6562770955072088,Democrats,Law Enforcement And Crime
+"Topic
+used",2.1366240726654206,Republicans,Law Enforcement And Crime
+"Not
+used",1.978045216684966,Republicans,Law Enforcement And Crime
+"Topic
+used",1.936010701116011,Overall,Voting Rights
+"Not
+used",1.8393980550046216,Overall,Voting Rights
+"Topic
+used",1.867123498742221,Democrats,Voting Rights
+"Not
+used",1.6008189929904217,Democrats,Voting Rights
+"Topic
+used",2.0048979034898013,Republicans,Voting Rights
+"Not
+used",2.0779771170188215,Republicans,Voting Rights
+"Topic
+used",1.711595372791811,Overall,Terrorism And Foreign Threats
+"Not
+used",1.92335128902135,Overall,Terrorism And Foreign Threats
+"Topic
+used",1.680322976571711,Democrats,Terrorism And Foreign Threats
+"Not
+used",1.6851740790541685,Democrats,Terrorism And Foreign Threats
+"Topic
+used",1.7428677690119108,Republicans,Terrorism And Foreign Threats
+"Not
+used",2.161528498988532,Republicans,Terrorism And Foreign Threats
+"Topic
+used",1.9776620426978504,Overall,Supreme Court And Judiciary
+"Not
+used",1.849345471627099,Overall,Supreme Court And Judiciary
+"Topic
+used",1.8625139807478674,Democrats,Supreme Court And Judiciary
+"Not
+used",1.6674532674766056,Democrats,Supreme Court And Judiciary
+"Topic
+used",2.088012268733251,Republicans,Supreme Court And Judiciary
+"Not
+used",2.0312376757775925,Republicans,Supreme Court And Judiciary
+"Topic
+used",1.7846351546159955,Overall,Gun Policy
+"Not
+used",1.8867604529734432,Overall,Gun Policy
+"Topic
+used",1.704443471253833,Democrats,Gun Policy
+"Not
+used",1.6927638748224778,Democrats,Gun Policy
+"Topic
+used",1.8648268379781585,Republicans,Gun Policy
+"Not
+used",2.0807570311244086,Republicans,Gun Policy
+"Topic
+used",2.5550126284552874,Overall,Iran And Nuclear Policy
+"Not
+used",1.8171156188757838,Overall,Iran And Nuclear Policy
+"Topic
+used",2.3832848266499584,Democrats,Iran And Nuclear Policy
+"Not
+used",1.6478808498094895,Democrats,Iran And Nuclear Policy
+"Topic
+used",2.7267404302606164,Republicans,Iran And Nuclear Policy
+"Not
+used",1.9863503879420785,Republicans,Iran And Nuclear Policy
+"Topic
+used",1.8877235209094771,Overall,Reproductive Rights
+"Not
+used",1.8570068963351372,Overall,Reproductive Rights
+"Topic
+used",1.3903308823529414,Democrats,Reproductive Rights
+"Not
+used",1.6925466770774982,Democrats,Reproductive Rights
+"Topic
+used",2.2553615581034387,Republicans,Reproductive Rights
+"Not
+used",2.021467115592776,Republicans,Reproductive Rights
+"Topic
+used",1.6068597338288633,Overall,Civil Rights
+"Not
+used",1.881830014538646,Overall,Civil Rights
+"Topic
+used",1.926103530160595,Democrats,Civil Rights
+"Not
+used",1.629874552407425,Democrats,Civil Rights
+"Topic
+used",1.2876159374971314,Republicans,Civil Rights
+"Not
+used",2.133785476669867,Republicans,Civil Rights
+"Topic
+used",2.064802777355963,Overall,Criminal Justice Reform
+"Not
+used",1.844915275365705,Overall,Criminal Justice Reform
+"Topic
+used",1.8670259509618061,Democrats,Criminal Justice Reform
+"Not
+used",1.6670498007528913,Democrats,Criminal Justice Reform
+"Topic
+used",2.2625796037501194,Republicans,Criminal Justice Reform
+"Not
+used",2.0227807499785193,Republicans,Criminal Justice Reform
+"Topic
+used",1.6569382716049381,Overall,Election Integrity
+"Not
+used",1.8590484346884935,Overall,Election Integrity
+"Topic
+used",1.288563492063492,Democrats,Election Integrity
+"Not
+used",1.684772192054495,Democrats,Election Integrity
+"Topic
+used",2.94625,Republicans,Election Integrity
+"Not
+used",2.033324677322492,Republicans,Election Integrity
