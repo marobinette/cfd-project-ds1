@@ -32,16 +32,18 @@ theme_pt = pd.pivot_table(
 )
 
 # -------------------------------
-# Format cell strings: "emails (percent%)"
+# Format cell strings
 # -------------------------------
 theme_formatted = pd.DataFrame(index=theme_pt.index)
 for party in theme_pt.columns.levels[1]:
     emails = theme_pt["emails", party].astype(int)
     percent = theme_pt["percent", party]
     # theme_formatted[party] = emails.map(str) + " (" + percent.map(lambda x: f"{x:.1f}") + "%)"
-    theme_formatted[party] = emails.map(lambda x: f"{x:,.0f}") + " (" + percent.map(lambda x: f"{x:.1f}") + "%)"
+    theme_formatted[party] = emails.map(lambda x: f"{x:,.0f}") + " emails (" + percent.map(lambda x: f"{x:.1f}") + "%)"
 
-theme_formatted.index.name = ""
+theme_formatted.index.name = None
+
+theme_formatted.columns = [col for col in theme_formatted.columns]  # now single-level: 'Democrat', 'Republican'
 
 # -------------------------------
 # Set cell shading
@@ -62,6 +64,10 @@ for col in theme_formatted.columns:
 
 # Apply the colors using Styler
 theme_pt_styled = theme_formatted.style.apply(lambda _: colors_df, axis=None)
+# theme_pt_styled = theme_formatted.style.apply(lambda _: colors_df, axis=None).hide(axis="index", subset=pd.IndexSlice[:, :0])
+
+# Hide the topic title row
+# theme_pt_styled = theme_pt_styled.hide(axis="index")
 
 # Apply coloring per column
 # for col in theme_formatted.columns:
@@ -72,6 +78,7 @@ theme_pt_styled = theme_formatted.style.apply(lambda _: colors_df, axis=None)
 # Add table styles and caption
 caption_size = "8pt"
 theme_pt_styled = theme_pt_styled.set_table_styles([
+    {'selector': 'tr.index_name', 'props': [('display', 'none')]},
     {'selector': 'th.row_heading', 'props': [
         ('text-align', 'left'),
         ('border', '1px solid gray'),
@@ -100,7 +107,11 @@ theme_pt_styled = theme_pt_styled.set_table_styles([
         ('text-align', 'left'),
         ('margin-top', '8pt')  
     ]}
-], overwrite=False).set_caption("The more emails, the darker the shading.")
+], overwrite=False).set_caption("The higher the email percentage, the darker the shading.")
+
+# html = theme_pt_styled.to_html()
+# with open("debug_output.html", "w", encoding="utf-8") as f:
+#     f.write(html)
 
 # -------------------------------
 # Export to PNG
